@@ -19,6 +19,7 @@ programs.nix-ld = {
   libraries = [ pkgs.zlib pkgs.openssl ];
 };
 environment.sessionVariables = {
+NIX_PROFILES = "/nix/store/8n9v7dpwlvynqpnmhh98l6zvh5p217c3-system-path";
 
 NIXOS_OZONE_WL = "1";
 };
@@ -102,7 +103,19 @@ boot.loader = {
    services.pipewire = {
      enable = true;
      pulse.enable = true;
+     jack.enable = true;
   };
+security.rtkit.enable = true;
+security.pam.loginLimits = [
+  { domain = "*"; type = "-"; item = "memlock"; value = "unlimited"; }
+  { domain = "*"; type = "-"; item = "rtprio"; value = "95"; }
+];
+# Modern NixOS syntax for systemd user-manager limits
+systemd.user.settings.Manager = {
+  DefaultLimitNOFILE = 524288;
+  DefaultLimitMEMLOCK = "infinity";
+  DefaultLimitRTPRIO = 95;
+};
 
   # Enable touchpad support (enabled default in most desktopManager).
    services.libinput.enable = true;
@@ -111,7 +124,7 @@ boot.loader = {
    users.users.mazachekkuni = {
 
      isNormalUser = true;
-     extraGroups = [ "wheel" "adbusers" "plugdev" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "adbusers" "plugdev" "audio" ]; # Enable ‘sudo’ for the user.
      shell = pkgs.zsh;
      home = "/home/mazachekkuni";
      packages = with pkgs; [
@@ -179,6 +192,11 @@ boot.loader = {
      fastfetch
      file-roller
      reaper
+     yabridge
+     yabridgectl
+     wine
+     guitarix
+     qjackctl
    ];
  systemd.services.restart-network-on-resume = {
   description = "Restart NetworkManager after system resume";
