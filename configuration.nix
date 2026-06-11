@@ -115,6 +115,7 @@ NIXOS_OZONE_WL = "1";
 	enable = true;
 	remotePlay.openFirewall = true; # Open ports for Steam Remote Play
 	dedicatedServer.openFirewall = true;
+   };
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
@@ -127,9 +128,12 @@ NIXOS_OZONE_WL = "1";
      zed-editor
      noctalia-shell
      quickshell
-    kdePackages.qtdeclarative
-    kitty
+     kdePackages.qtdeclarative
+     kitty
      nautilus
+     xwayland-satellite
+     direnv
+     nix-direnv
    ];
 programs.nix-ld.enable = true;
 
