@@ -58,7 +58,15 @@ NIXOS_OZONE_WL = "1";
   # Battery
     #services.tlp.enable = true;
     services.power-profiles-daemon.enable = true;
-    hardware.graphics.enable = true;  
+    hardware.graphics = {
+	enable = true;
+	enable32Bit = true;
+	extraPackages = with pkgs; [
+	 amdvlk
+	 libvdpau-va-gl
+	 vaapiVpau
+	 ]
+	};  
 
   # Configure keymap in X11
    services.xserver.xkb.layout = "us,ru,ua";
