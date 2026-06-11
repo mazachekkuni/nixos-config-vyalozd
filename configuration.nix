@@ -65,7 +65,7 @@ NIXOS_OZONE_WL = "1";
 	 amdvlk
 	 libvdpau-va-gl
 	 vaapiVpau
-	 ]
+	 ];
 	};  
 
   # Configure keymap in X11
