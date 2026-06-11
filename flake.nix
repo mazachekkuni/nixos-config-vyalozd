@@ -30,8 +30,13 @@
 
   outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, ... }@inputs: {
     nixosConfigurations.awesomebox = nixpkgs.lib.nixosSystem {
+      # Передаем пустую структуру архитектуры, чтобы nixosSystem не ругался на отсутствие аргумента,
+      # но при этом переопределяем платформу через правильный hostPlatform
+      system = null; 
+      
       specialArgs = { inherit inputs; }; 
       modules = [
+        { nixpkgs.hostPlatform = "x86_64-linux"; } # Указываем платформу здесь
         ./hardware-configuration.nix
         ./configuration.nix
         ./noctalia.nix  
@@ -40,7 +45,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-	  home-manager.backupFileExtension = "backup"; 
+          home-manager.backupFileExtension = "backup"; 
           home-manager.extraSpecialArgs = { inherit inputs; }; 
           home-manager.users.mazachekkuni = import ./home.nix;
           home-manager.sharedModules = [
@@ -50,5 +55,4 @@
       ];
     };
   };
-}
 
