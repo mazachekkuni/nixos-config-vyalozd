@@ -136,6 +136,7 @@ NIXOS_OZONE_WL = "1";
      xwayland-satellite
      direnv
      nix-direnv
+     gcc
    ];
 programs.nix-ld.enable = true;
 
