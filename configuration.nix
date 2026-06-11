@@ -121,7 +121,7 @@ NIXOS_OZONE_WL = "1";
      brightnessctl
      git
      _64gram
-     zed
+     zed-editor
      noctalia-shell
      quickshell
     kdePackages.qtdeclarative
