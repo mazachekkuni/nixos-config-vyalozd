@@ -111,6 +111,7 @@ NIXOS_OZONE_WL = "1";
 
   # cooler shit
    programs.firefox.enable = true;
+   programs.steam.enable = true;
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
