@@ -56,8 +56,8 @@ NIXOS_OZONE_WL = "1";
 	programs.niri.enable = true;
 
   # Battery
-    services.tlp.enable = true;
-
+    #services.tlp.enable = true;
+    services.power-profiles-daemon.enable = true;
     hardware.graphics.enable = true;  
 
   # Configure keymap in X11
