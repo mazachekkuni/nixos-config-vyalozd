@@ -50,9 +50,9 @@
           home-manager.users.mazachekkuni = import ./home.nix;
           home-manager.sharedModules = [
             spicetify-nix.homeManagerModules.default
-          ];
+                    ];
         }
       ];
     };
   };
-
+}
