@@ -32,7 +32,6 @@
     nixosConfigurations.awesomebox = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; }; 
       modules = [
-	{ nixpkgs.hostPlatform = "x86_64-linux"; } 
         ./hardware-configuration.nix
         ./configuration.nix
         ./noctalia.nix  
