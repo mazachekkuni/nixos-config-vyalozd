@@ -1,0 +1,1 @@
+/home/mazachekkuni/.config/home-manager/home.nix
