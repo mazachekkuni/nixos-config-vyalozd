@@ -30,9 +30,9 @@
 
   outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, ... }@inputs: {
     nixosConfigurations.awesomebox = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = { inherit inputs; }; 
       modules = [
+	{ nixpkgs.hostPlatform = "x86_64-linux"; } 
         ./hardware-configuration.nix
         ./configuration.nix
         ./noctalia.nix  
