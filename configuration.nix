@@ -62,7 +62,6 @@ NIXOS_OZONE_WL = "1";
 	enable = true;
 	enable32Bit = true;
 	extraPackages = with pkgs; [
-	 amdvlk
 	 libvdpau-va-gl
 	 vaapiVpau
 	 ];
