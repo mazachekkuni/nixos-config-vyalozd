@@ -32,7 +32,6 @@
     nixosConfigurations.awesomebox = nixpkgs.lib.nixosSystem {
       # Передаем пустую структуру архитектуры, чтобы nixosSystem не ругался на отсутствие аргумента,
       # но при этом переопределяем платформу через правильный hostPlatform
-      system = null; 
       
       specialArgs = { inherit inputs; }; 
       modules = [

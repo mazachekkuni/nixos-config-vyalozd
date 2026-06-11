@@ -3,7 +3,7 @@
 {
   # Додаємо пакет Noctalia з головного флейка у систему
   environment.systemPackages = [
-    inputs.noctalia.packages.${pkgs.system}.default
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Вмикаємо обов'язкові сервіси для роботи системних toggles (Wi-Fi, батарея, Bluetooth)
