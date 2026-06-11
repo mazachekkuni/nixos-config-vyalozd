@@ -108,7 +108,9 @@ NIXOS_OZONE_WL = "1";
     #home.stateVersion = "26.11"; 
   #};
   programs.zsh.enable = true;
-
+  programs.zsh.interactiveShellInit = ''
+  eval "$(direnv hook zsh)"
+'';
   # cooler shit
    programs.firefox.enable = true;
    programs.steam = {
