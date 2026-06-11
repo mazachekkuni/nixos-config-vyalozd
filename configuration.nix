@@ -90,18 +90,18 @@ NIXOS_OZONE_WL = "1";
        tree
      ];
   };
-    home-manager.users.mazachekkuni = { pkgs, ... }: {
-    home.packages = [ 
-      pkgs.tree 
-      pkgs.atool 
-      pkgs.httpie 
-    ];
+    #home-manager.users.mazachekkuni = { pkgs, ... }: {
+    #home.packages = [ 
+     # pkgs.tree 
+     # pkgs.atool 
+     # pkgs.httpie 
+    #];
 
 
-    programs.home-manager.enable = true;
+   # programs.home-manager.enable = true;
 
-    home.stateVersion = "26.11"; 
-  };
+    #home.stateVersion = "26.11"; 
+  #};
   programs.zsh.enable = true;
 
   # cooler shit
