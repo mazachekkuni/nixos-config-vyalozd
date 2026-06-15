@@ -11,7 +11,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +49,7 @@
           home-manager.users.mazachekkuni = import ./home.nix;
           home-manager.sharedModules = [
             spicetify-nix.homeManagerModules.default
-                    ];
+        ];
         }
       ];
     };
