@@ -1,5 +1,5 @@
 {
-  description = "Конфігурація NixOS з Home Manager, Noctalia та Niri";
+  description = "NixOS Vyalozd";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -30,12 +30,10 @@
 
   outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, ... }@inputs: {
     nixosConfigurations.awesomebox = nixpkgs.lib.nixosSystem {
-      # Передаем пустую структуру архитектуры, чтобы nixosSystem не ругался на отсутствие аргумента,
-      # но при этом переопределяем платформу через правильный hostPlatform
       
       specialArgs = { inherit inputs; }; 
       modules = [
-        { nixpkgs.hostPlatform = "x86_64-linux"; } # Указываем платформу здесь
+        { nixpkgs.hostPlatform = "x86_64-linux"; }
         ./hardware-configuration.nix
         ./configuration.nix
         ./noctalia.nix  
