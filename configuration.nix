@@ -8,6 +8,7 @@
     ];
 nixpkgs.config.allowUnfree = true;
 
+
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 nixpkgs.hostPlatform = "x86_64-linux";
 
@@ -121,6 +122,12 @@ NIXOS_OZONE_WL = "1";
 	remotePlay.openFirewall = true; # Open ports for Steam Remote Play
 	dedicatedServer.openFirewall = true;
    };
+
+   users.users.drfoobar = {
+    isNormalUser = true;
+};
+   users.groups.drfoobar = {};
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
