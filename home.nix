@@ -51,13 +51,20 @@
     deluge
     vesktop
     easyeffects
-    wl-clipboard    
+    wl-clipboard
+    nuclear    
   ];
 
   qt = {
     enable = true;
     platformTheme.name = "adwaita";
     style.name = "adwaita-dark";
+  };
+
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_HWP = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland"; # This stops the unstable branch XWayland fallback loop
   };
 
   xdg.portal = {
@@ -174,9 +181,9 @@ programs.direnv = {
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}; 
   in {
     enable = true;
-	alwaysEnableDevTools = true;
-  
-    theme = spicePkgs.themes.catppuccin;
+    spotifyLaunchFlags = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
+    
+    #theme = spicePkgs.themes.catppuccin;
     colorScheme = "custom";
 
   customColorScheme = {
