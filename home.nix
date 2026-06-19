@@ -52,7 +52,9 @@
     vesktop
     easyeffects
     wl-clipboard
-    nuclear    
+    nuclear
+    qt6.qtbase
+    qt6.qttools    
   ];
 
   qt = {
