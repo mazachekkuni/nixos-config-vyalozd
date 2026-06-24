@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -20,9 +20,16 @@ programs.nix-ld = {
 environment.sessionVariables = {
 NIXOS_OZONE_WL = "1";
 };
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+boot.loader = {
+  efi.canTouchEfiVariables = true;
+  grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+    
+    theme = inputs.nixos-grub-themes.packages.${pkgs.stdenv.hostPlatform.system}.nixos;
+    };
+  };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;

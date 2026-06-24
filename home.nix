@@ -1,6 +1,5 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, inputs, ... }: {
 
-{
   home.username = "mazachekkuni";
   home.homeDirectory = "/home/mazachekkuni";
   home.stateVersion = "26.11";
@@ -54,7 +53,8 @@
     wl-clipboard
     nuclear
     qt6.qtbase
-    qt6.qttools    
+    qt6.qttools
+    inputs.helium.packages.${stdenv.hostPlatform.system}.default    
   ];
 
   qt = {

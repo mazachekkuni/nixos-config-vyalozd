@@ -6,7 +6,12 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
-    
+    nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
+    helium = {
+    url = "github:schembriaiden/helium-browser-nix-flake";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
