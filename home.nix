@@ -54,7 +54,7 @@
     nuclear
     qt6.qtbase
     qt6.qttools
-    inputs.helium.packages.${stdenv.hostPlatform.system}.default    
+    inputs.helium.packages.${stdenv.hostPlatform.system}.default
   ];
 
   qt = {
@@ -147,7 +147,6 @@
     shellAliases = {
       nixos-update = ''cd /etc/nixos && sudo nixos-rebuild switch --flake .#awesomebox --impure && cd'';
       commit = ''cd /etc/nixos && sudo git add . && sudo git commit -m "vyalozd" && cd'';
-
 	initContent = ''
  	 eval "$(direnv hook zsh)"
   '';
@@ -176,6 +175,22 @@ programs.direnv = {
     };
   };
 };
+
+programs.mpv = {
+  enable = true;
+
+  scripts = with pkgs.mpvScripts; [
+    uosc
+    mpris
+  ];
+
+  config = {
+    hwdec = "auto";
+    profile = "gpu-hq";
+    vo = "gpu";
+  };
+};
+
 
   programs.home-manager.enable = true;
 
