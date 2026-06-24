@@ -49,9 +49,6 @@
     playerctl
     deluge
     vesktop
-    easyeffects
-    wl-clipboard
-    nuclear
     qt6.qtbase
     qt6.qttools
     inputs.helium.packages.${stdenv.hostPlatform.system}.default
