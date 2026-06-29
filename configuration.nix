@@ -52,7 +52,12 @@ boot.loader = {
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-   i18n.defaultLocale = "en_US.UTF-8";
+   i18n = {
+   defaultLocale = "en_US.UTF-8";
+   extraLocaleSettings = {
+    LC_TIME = "en_GB.UTF-8";
+  };
+};
    console = {
      font = "Lat2-Terminus16";
     # keyMap = "us";
@@ -99,7 +104,7 @@ boot.loader = {
    users.users.mazachekkuni = {
 
      isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "adbusers" "plugdev" ]; # Enable ‘sudo’ for the user.
      shell = pkgs.zsh;
      home = "/home/mazachekkuni";
      packages = with pkgs; [
@@ -128,7 +133,13 @@ boot.loader = {
 	enable = true;
 	remotePlay.openFirewall = true; # Open ports for Steam Remote Play
 	dedicatedServer.openFirewall = true;
+     package = pkgs.steam.override {
+    extraPkgs = pkgs: with pkgs; [
+      mangohud
+      gamemode
+    ];
    };
+  };
 
    users.users.drfoobar = {
     isNormalUser = true;
@@ -155,6 +166,7 @@ boot.loader = {
      nix-direnv
      gcc
    ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

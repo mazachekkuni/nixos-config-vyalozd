@@ -12,10 +12,10 @@
   };
 
 
-  xdg.enable = true;
-  xdg.mime.enable = true;
-  targets.genericLinux.enable = true; 
   
+  targets.genericLinux.enable = true; 
+
+   
   xdg.configFile."autostart/xfce4-notifyd.desktop".text = ''
     [Desktop Entry]
     Hidden=true
@@ -30,6 +30,12 @@
     [Desktop Entry]
     Hidden=true
   '';
+    xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = [ "thunar.desktop" ];
+    };
+  };
 
   home.packages = with pkgs; [
     papirus-icon-theme
@@ -44,7 +50,6 @@
     supertuxkart
     oh-my-zsh
     kdePackages.ark
-    kdePackages.dolphin
     nerd-fonts.jetbrains-mono
     playerctl
     deluge
@@ -52,7 +57,9 @@
     qt6.qtbase
     qt6.qttools
     inputs.helium.packages.${stdenv.hostPlatform.system}.default
+    transmission_4-gtk
   ];
+
 
   qt = {
     enable = true;
@@ -70,8 +77,15 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     config.common.default = [ "gnome" ];
-  };
-  
+};  
+  dconf.settings = {
+      "org/gnome/desktop/background" = {
+        picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
+      };
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };  
   gtk = {
     enable = true;
     
@@ -86,7 +100,13 @@
       name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
-    
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
     iconTheme = {
       name = "YAMIS"; 
       package = pkgs.stdenv.mkDerivation {
@@ -115,11 +135,6 @@
     };
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
 
   programs.eza = {
     enable = true;
@@ -197,9 +212,25 @@ programs.mpv = {
     enable = true;
     spotifyLaunchFlags = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
     
-    #theme = spicePkgs.themes.catppuccin;
-    colorScheme = "custom";
+    theme = spicePkgs.themes.comfy // {
+  injectCss = true;
+  
+  additionalCss = ''
+    :root {
+       --font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
+        --font-family-heading: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
+      }
+      
+      /* Brute-force override all elements in the UI */
+      * {
+        font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
+      }
+    
+  '';
+  };
 
+    colorScheme = "custom";
+    
   customColorScheme = {
     text               = "e5e1e6";
     subtext            = "c8bfff";
@@ -209,13 +240,15 @@ programs.mpv = {
     card               = "201f23";
     shadow             = "141316";
     selected-row       = "201f23";
-    button             = "c8bfff";
+    button             = "ffffff";
     button-active      = "c8bfff";
     button-disabled    = "2f2175";
     tab-active         = "c8bfff";
     notification       = "ffb4ab";
     notification-error = "ffb4ab";
     misc               = "2f2175";
+    play-button        = "c8bfff";
+    play-button-active = "c9cfff";
   };
    
 
@@ -429,4 +462,4 @@ programs.zed-editor = {
     }; # Закрывает terminal
   }; # Закрывает userSettings
 }; # Закрывает programs.zed-editor
-} # Самая последняя скобка, закрывающая весь конфигурационный файл (после строки 414)
+}
