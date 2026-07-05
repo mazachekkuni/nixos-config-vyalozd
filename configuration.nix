@@ -165,6 +165,7 @@ boot.loader = {
      direnv
      nix-direnv
      gcc
+     gh
    ];
 
 
