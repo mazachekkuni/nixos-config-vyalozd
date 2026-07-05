@@ -158,7 +158,7 @@
 
     shellAliases = {
       nixos-update = ''cd /etc/nixos && sudo nixos-rebuild switch --flake .#awesomebox --impure && cd'';
-      commit = ''cd /etc/nixos && sudo git add . && sudo git commit -m "vyalozd" && sudo git push origin main && cd'';
+      commit = ''cd /etc/nixos && sudo git add . && sudo git commit -m "vyalozd" ; sudo git push origin main ; cd'';
 	initContent = ''
  	 eval "$(direnv hook zsh)"
   '';
