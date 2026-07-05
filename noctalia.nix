@@ -34,7 +34,15 @@
         version = 2;
       };
       # this may also be a string or a path to a JSON file.
-
+      settings = {
+        templates = {
+          enableUserTemplates = true;
+          activeTemplates = [
+  { id = "spicetify"; active = true; }
+];
+        };
+      };
+      
       pluginSettings = {
         catwalk = {
           minimumThreshold = 25;
@@ -47,5 +55,7 @@
   services.upower.enable = true;
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
+  
 }
+
 

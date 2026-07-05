@@ -8,7 +8,7 @@
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic"; 
-    size = 24;
+    size = 16;
   };
 
 
@@ -194,12 +194,20 @@ programs.mpv = {
   scripts = with pkgs.mpvScripts; [
     uosc
     mpris
+    thumbfast
   ];
-
+  
   config = {
     hwdec = "auto";
     profile = "gpu-hq";
     vo = "gpu";
+    osd-font = "JetBrainsMono Nerd Font";
+  };
+  
+  scriptOpts = {
+    uosc = {
+      osd-font = "JetBrainsMono Nerd Font"; 
+    };
   };
 };
 
@@ -212,9 +220,9 @@ programs.mpv = {
     enable = true;
     spotifyLaunchFlags = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
     
-    theme = spicePkgs.themes.comfy // {
+  theme = spicePkgs.themes.comfy // {
   injectCss = true;
-  
+  replaceColors = true; 
   additionalCss = ''
     :root {
        --font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
@@ -228,7 +236,7 @@ programs.mpv = {
     
   '';
   };
-
+    
     colorScheme = "custom";
     
   customColorScheme = {
