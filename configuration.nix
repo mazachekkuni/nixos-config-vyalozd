@@ -165,6 +165,7 @@ boot.loader = {
      nix-direnv
      gcc
      gh
+     fastfetch
    ];
 
 
