@@ -10,7 +10,7 @@
     ];
 
     # configure options
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
       plugins = {
         sources = [
