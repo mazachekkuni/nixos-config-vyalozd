@@ -69,7 +69,10 @@ boot.loader = {
     services.displayManager.ly.enable = true;
      services.xserver.desktopManager.xfce.enable = true;
 
-	programs.niri.enable = true;
+	programs.niri = {
+    enable = true;
+    package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
+};
 
   # Battery
     #services.tlp.enable = true;
