@@ -1,18 +1,23 @@
 { pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   users.users.drfoobar.group = "drfoobar";
+  
   home-manager.users.drfoobar = {
     home.stateVersion = "26.11";
-    # import the home manager module
+    
+    # Импорт модуля Home Manager для Noctalia
     imports = [
       inputs.noctalia.homeModules.default
     ];
 
-    # configure options
     programs.noctalia = {
       enable = true;
+
+      # Конфигурация плагинов и их версий (формат v5)
       plugins = {
+        version = 2;
         sources = [
           {
             enabled = true;
@@ -25,33 +30,33 @@
             enabled = true;
             sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
           };
-        };
           clipper = {
-        enabled = true;
-        sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins"; 
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins"; 
+          };
+        }; # Закрывающая скобка для states теперь на месте
       };
-    
-        version = 2;
-      };
-      # this may also be a string or a path to a JSON file.
+
+      # Вся конфигурация поведения и плагинов теперь находится внутри settings
       settings = {
         templates = {
           enableUserTemplates = true;
           activeTemplates = [
-  { id = "spicetify"; active = true; }
-];
+            { id = "spicetify"; active = true; }
+          ];
         };
-      };
-      
-      pluginSettings = {
-        catwalk = {
-          minimumThreshold = 25;
-          hideBackground = true;
+
+        # Настройки конкретных плагинов (pluginSettings) перенесены сюда
+        pluginSettings = {
+          catwalk = {
+            minimumThreshold = 25;
+            hideBackground = true;
+          };
         };
-        # this may also be a string or a path to a JSON file.
       };
     };
   };
+
   environment.systemPackages = [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
@@ -59,7 +64,4 @@
   services.upower.enable = true;
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
-  
 }
-
-
