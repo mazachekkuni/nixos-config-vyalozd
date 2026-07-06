@@ -1,5 +1,4 @@
-{ pkgs, inputs, ... }:
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   users.users.drfoobar.group = "drfoobar";
@@ -15,30 +14,9 @@
     programs.noctalia = {
       enable = true;
 
-      # Конфигурация плагинов и их версий (формат v5)
-      plugins = {
-        version = 2;
-        sources = [
-          {
-            enabled = true;
-            name = "Official Noctalia Plugins";
-            url = "https://github.com/noctalia-dev/noctalia-plugins";
-          }
-        ];
-        states = {
-          catwalk = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-          clipper = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins"; 
-          };
-        }; # Закрывающая скобка для states теперь на месте
-      };
-
-      # Вся конфигурация поведения и плагинов теперь находится внутри settings
+      # Абсолютно вся конфигурация Noctalia v5 теперь пишется строго внутри settings
       settings = {
+        # Базовые настройки шаблонов
         templates = {
           enableUserTemplates = true;
           activeTemplates = [
@@ -46,11 +24,34 @@
           ];
         };
 
-        # Настройки конкретных плагинов (pluginSettings) перенесены сюда
+        # Настройки конкретных плагинов перенесены сюда
         pluginSettings = {
           catwalk = {
             minimumThreshold = 25;
             hideBackground = true;
+          };
+        };
+
+        # Конфигурация плагинов v5 (внутри общего блока настроек)
+        # Если вы хотите управлять ими декларативно, структура выглядит так:
+        plugins = {
+          version = 2;
+          sources = [
+            {
+              enabled = true;
+              name = "Official Noctalia Plugins";
+              url = "https://github.com/noctalia-dev/noctalia-plugins";
+            }
+          ];
+          states = {
+            catwalk = {
+              enabled = true;
+              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+            };
+            clipper = {
+              enabled = true;
+              sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins"; 
+            };
           };
         };
       };
