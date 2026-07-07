@@ -11,13 +11,13 @@ nixpkgs.config.allowUnfree = true;
 
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 nixpkgs.hostPlatform = "x86_64-linux";
-
 programs.dconf.enable = true;
 programs.nix-ld = {
   enable = true;
   libraries = [ pkgs.zlib pkgs.openssl ];
 };
 environment.sessionVariables = {
+
 NIXOS_OZONE_WL = "1";
 };
 boot.loader = {
@@ -30,7 +30,10 @@ boot.loader = {
     theme = inputs.nixos-grub-themes.packages.${pkgs.stdenv.hostPlatform.system}.nixos;
     };
   };
-
+  boot.kernelParams = [
+	"mem_sleep_default=deep"
+	"atkbd.reset"
+];
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -171,6 +174,7 @@ boot.loader = {
      fastfetch
    ];
 
+   
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
