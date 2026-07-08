@@ -26,10 +26,10 @@
       url = "github:sodiboo/niri-flake";
     };
 
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+#    quickshell = {
+#      url = "github:quickshell-mirror/quickshell";
+#      inputs.nixpkgs.follows = "nixpkgs";
+#    };
   };
 
   outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, ... }@inputs: {
