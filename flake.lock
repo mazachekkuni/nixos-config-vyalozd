@@ -199,26 +199,6 @@
         "type": "github"
       }
     },
-    "quickshell": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783498981,
-        "narHash": "sha256-X+3L+dhe9216kq/0AoCOBedL4zhAwjW8xiTKvZyng8Q=",
-        "owner": "quickshell-mirror",
-        "repo": "quickshell",
-        "rev": "25eb04fb06c09bbdef91664f044ad22195862700",
-        "type": "github"
-      },
-      "original": {
-        "owner": "quickshell-mirror",
-        "repo": "quickshell",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "helium": "helium",
@@ -227,7 +207,6 @@
         "nixos-grub-themes": "nixos-grub-themes",
         "nixpkgs": "nixpkgs_3",
         "noctalia": "noctalia",
-        "quickshell": "quickshell",
         "spicetify-nix": "spicetify-nix"
       }
     },
