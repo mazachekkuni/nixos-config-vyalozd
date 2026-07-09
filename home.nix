@@ -58,6 +58,7 @@
     qt6.qttools
     inputs.helium.packages.${stdenv.hostPlatform.system}.default
     transmission_4-gtk
+    anime4k
   ];
 
 
@@ -202,8 +203,9 @@ programs.mpv = {
     profile = "gpu-hq";
     vo = "gpu";
     osd-font = "JetBrainsMono Nerd Font";
+    # Optimized shaders for lower-end GPU: Mode A (Fast)
+    glsl-shaders="~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_M.glsl:~~/shaders/Anime4K_Upscale_CNN_x2_M.glsl:~~/shaders/Anime4K_AutoDownscalePre_x2.glsl:~~/shaders/Anime4K_AutoDownscalePre_x4.glsl:~~/shaders/Anime4K_Upscale_CNN_x2_S.glsl";
   };
-  
   scriptOpts = {
     uosc = {
       osd-font = "JetBrainsMono Nerd Font"; 

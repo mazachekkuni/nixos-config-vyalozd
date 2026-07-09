@@ -86,7 +86,6 @@ boot.loader = {
 	extraPackages = with pkgs; [
 	 ];
 	};  
-
   # Configure keymap in X11
    services.xserver.xkb.layout = "us,ru,ua";
    services.xserver.xkb.options = "grp:alt_shift_toggle";
