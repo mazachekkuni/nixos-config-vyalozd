@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
@@ -32,7 +35,7 @@
 #    };
   };
 
-  outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, nixos-hardware, ... }@inputs: {
     nixosConfigurations.awesomebox = nixpkgs.lib.nixosSystem {
       
       specialArgs = { inherit inputs; }; 
@@ -42,7 +45,7 @@
         ./configuration.nix
         ./noctalia.nix  
         niri.nixosModules.niri
-        
+        nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
