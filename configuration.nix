@@ -178,6 +178,15 @@ boot.loader = {
      fastfetch
      file-roller
    ];
+ systemd.services.restart-network-on-resume = {
+  description = "Restart NetworkManager after system resume";
+  wantedBy = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+  after = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+  serviceConfig = {
+    Type = "oneshot";
+    ExecStart = "${pkgs.systemd}/bin/systemctl restart NetworkManager.service";
+  };
+};
 
    
 
