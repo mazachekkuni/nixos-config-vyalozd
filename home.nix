@@ -220,7 +220,6 @@ programs.mpv = {
     enable = true;
     spotifyLaunchFlags = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
   
-  
   theme = spicePkgs.themes.comfy // {
   injectCss = true;
   replaceColors = true; 
