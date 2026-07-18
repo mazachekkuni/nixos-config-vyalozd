@@ -219,7 +219,7 @@ programs.mpv = {
   in {
     enable = true;
     spotifyLaunchFlags = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
-  
+
   theme = spicePkgs.themes.comfy // {
   injectCss = true;
   replaceColors = true; 
@@ -227,7 +227,24 @@ programs.mpv = {
     :root {
        --font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
         --font-family-heading: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
-      }
+        button[aria-label="Comfy Settings"],
+	button[title="Comfy Settings"] {
+    	display: none !important;
+	}
+ 	button[aria-label="Marketplace"],
+	button[title="Marketplace"] {
+        display: none !important;
+	} 
+	.main-nowPlayingView-section,
+	.Root__right-sidebar {
+        display: none !important;
+ }
+}
+/* Let the main content take the freed space */
+.Root__main-view {
+    grid-template-columns: auto !important;
+}
+     }
       
       /* Brute-force override all elements in the UI */
       * {
@@ -265,7 +282,7 @@ programs.mpv = {
       hidePodcasts
       
       adblock
-    ];
+   ];
 
     enabledCustomApps = with spicePkgs.apps; [
       marketplace

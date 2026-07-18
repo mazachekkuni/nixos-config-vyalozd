@@ -8,7 +8,9 @@
 	
     ];
 nixpkgs.config.allowUnfree = true;
-
+nixpkgs.config.permittedInsecurePackages = [
+                "electron-40.10.5"
+              ];
 
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 nixpkgs.hostPlatform = "x86_64-linux";
