@@ -12,8 +12,6 @@
     size = 14;
   };
 
-
-  
   targets.genericLinux.enable = true; 
 
    
@@ -53,12 +51,12 @@
     kdePackages.ark
     nerd-fonts.jetbrains-mono
     playerctl
-    deluge
     vesktop
     qt6.qtbase
     qt6.qttools
     inputs.helium.packages.${stdenv.hostPlatform.system}.default
     transmission_4-gtk
+    lutris
   ];
 
 
