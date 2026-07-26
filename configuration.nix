@@ -178,6 +178,7 @@ boot.loader = {
      gh
      fastfetch
      file-roller
+     reaper
    ];
  systemd.services.restart-network-on-resume = {
   description = "Restart NetworkManager after system resume";
