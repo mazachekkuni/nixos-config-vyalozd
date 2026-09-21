@@ -93,7 +93,7 @@ boot.loader = {
    services.xserver.xkb.layout = "us,ru,ua";
    services.xserver.xkb.options = "grp:alt_shift_toggle";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
+    nix.settings.http2 = false;
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -178,12 +178,10 @@ systemd.user.settings.Manager = {
      brightnessctl
      git
      _64gram
-     zed-editor
      noctalia-shell
      quickshell
      kdePackages.qtdeclarative
      kitty
-     nautilus
      xwayland-satellite
      direnv
      nix-direnv

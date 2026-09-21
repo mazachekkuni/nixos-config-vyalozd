@@ -46,7 +46,6 @@
     adwaita-qt
     adwaita-qt6
     qt6Packages.qtstyleplugin-kvantum
-    supertuxkart
     oh-my-zsh
     kdePackages.ark
     nerd-fonts.jetbrains-mono
@@ -56,7 +55,6 @@
     qt6.qttools
     inputs.helium.packages.${stdenv.hostPlatform.system}.default
     transmission_4-gtk
-    lutris
   ];
 
 
