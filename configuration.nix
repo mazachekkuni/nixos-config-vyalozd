@@ -197,6 +197,8 @@ systemd.user.settings.Manager = {
      wine
      guitarix
      qjackctl
+     nvim
+     wl-clipboard
    ];
  systemd.services.restart-network-on-resume = {
   description = "Restart NetworkManager after system resume";
