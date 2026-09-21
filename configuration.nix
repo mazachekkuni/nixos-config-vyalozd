@@ -197,7 +197,7 @@ systemd.user.settings.Manager = {
      wine
      guitarix
      qjackctl
-     nvim
+     neovim
      wl-clipboard
    ];
  systemd.services.restart-network-on-resume = {
