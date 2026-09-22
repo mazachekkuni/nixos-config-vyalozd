@@ -28,14 +28,15 @@
     niri = {
       url = "github:sodiboo/niri-flake";
     };
-
+    lazyvim = {
+      url = "github:pfassina/lazyvim-nix";
 #    quickshell = {
 #      url = "github:quickshell-mirror/quickshell";
 #      inputs.nixpkgs.follows = "nixpkgs";
 #    };
   };
 
-  outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, nixos-hardware, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, spicetify-nix, niri, nixos-hardware, lazyvim, ... }@inputs: {
     nixosConfigurations.awesomebox = nixpkgs.lib.nixosSystem {
       
       specialArgs = { inherit inputs; }; 

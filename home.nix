@@ -424,6 +424,8 @@ programs.mpv = {
       include current-theme.conf
     '';
   };
+  imports = [ lazyvim.homeManagerModules.default ];
+  programs.lazyvim.enable = true;
 programs.zed-editor = {
   enable = true;
 
