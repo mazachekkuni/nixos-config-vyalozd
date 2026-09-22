@@ -424,7 +424,7 @@ programs.mpv = {
       include current-theme.conf
     '';
   };
-  imports = [ lazyvim.homeManagerModules.default ];
+  imports = [ inputs.lazyvim.homeManagerModules.default ];
   programs.lazyvim.enable = true;
 programs.zed-editor = {
   enable = true;
@@ -485,4 +485,10 @@ programs.zed-editor = {
     }; # Закрывает terminal
   }; # Закрывает userSettings
 }; # Закрывает programs.zed-editor
+   programs.neovim = {
+  enable = true;
+  plugins = with pkgs.vimPlugins; [
+    base16-nvim
+  ];
+};
 }
