@@ -30,6 +30,7 @@
     };
     lazyvim = {
       url = "github:pfassina/lazyvim-nix";
+    };
 #    quickshell = {
 #      url = "github:quickshell-mirror/quickshell";
 #      inputs.nixpkgs.follows = "nixpkgs";
